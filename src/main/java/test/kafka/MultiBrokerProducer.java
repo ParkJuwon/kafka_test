@@ -7,6 +7,17 @@ import kafka.producer.ProducerConfig;
 import java.util.Properties;
 import java.util.Random;
 
+
+/**
+ * topic create =>
+ *  bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 2 --partitions 5 --topic kafkatopic
+ *
+ * MultiBrokerProducer run =>
+ *  java MultiBrokerProducer kafkatopic
+ *
+ * Consumer Test =>
+ * 	bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic kafkatopic --from-beginning
+ */
 public class MultiBrokerProducer {
 	private static Producer<String, String> producer;
 	private final Properties props = new Properties();
