@@ -13,6 +13,23 @@ import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * MultiThreadHLConsumer run =>
+ * 	java MultiThreadHLConsumer multithreadtopic 4
+ *
+ *  zookeeper 실행 >
+ * 	bin/zookeeper-server-start.sh config/zookeeper.properties
+ *
+ * 	broker 실행 >
+ * 	env JMX_PORT=9999 bin/kafka-server-start.sh config/server-1.properties
+ * 	env JMX_PORT=10000 bin/kafka-server-start.sh config/server-2.properties
+ *
+ * 	topic 생성 >
+ * 	bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 2 --partitions 4 --topic multithreadtopic
+ *
+ *	producer 실행 >
+ * 	bin/kafka-console-producer.sh --broker-list localhost:9092,localhost:9093 --topic multithreadtopic
+ */
 public class MultiThreadHLConsumer {
 	private ExecutorService executor;
 	private final ConsumerConnector consumer;
